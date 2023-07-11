@@ -4,11 +4,11 @@ echo
 
 {
 echo # SECURITY
+echo   security.bsd.see_other_uids=0
 echo   security.bsd.see_other_gids=0
 echo   security.bsd.see_jail_proc=0
 echo   security.bsd.unprivileged_read_msgbuf=0
 echo   security.bsd.unprivileged_proc_debug=0
-echo
 echo 
 echo # SECURITY/RANDOM PID
 echo   kern.randompid=1
