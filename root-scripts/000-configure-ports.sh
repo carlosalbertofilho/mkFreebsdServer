@@ -21,10 +21,3 @@ cd /usr/ports
 cd ports-mgmt/psearch && make install
 
 
-echo
-echo Copy config
-echo
-
-{
-  echo hint.apic.0.disabled="1"  
-} >> /boot/loader.conf
