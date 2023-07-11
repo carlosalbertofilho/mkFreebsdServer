@@ -87,8 +87,14 @@ echo
 echo # NETWORK/CONGESTION CONTROL
 echo   net.inet.tcp.cc.algorithm=htcp
 echo 
-echo # ENABLES ADAPTIVE BACKOFF ADJUSTMENt
+echo # DEFAULT TO USE FOR THE TCP STACK
+echo   net.inet.tcp.functions_default=bbr
+echo
+echo # ENABLES ADAPTIVE BACKOFF ADJUSTMENT
 echo   net.inet.tcp.cc.htcp.adaptive_backoff=1
+echo
+echo # shares the same congestion control settings
+echo   net.inet.tcp.functions_inherit_listen_socket_stack=0
 echo 
 echo # ENABLING ROUND-TRIP TIME SCALING (rtt SCALING) IN THE htcp ALGORITHM 
 echo   net.inet.tcp.cc.htcp.rtt_scaling=1
@@ -102,19 +108,26 @@ echo
 echo # MAXIMUM CONNECTION ACCEPTANCE QUEUE SIZE TO 1024
 echo   kern.ipc.soacceptqueue=1024
 echo 
-echo # MAXIMUM KERNEL SOCKET BUFFER SIZE
-echo   kern.ipc.maxsockbuf=2097152
+echo # SET TO AT LEAST 16MB FOR 10GE HOSTS
+echo   kern.ipc.maxsockbuf=16777216
 echo 
+echo # enable send/recv autotuning
+echo   net.inet.tcp.sendbuf_auto=1
+echo   net.inet.tcp.recvbuf_auto=1
+echo
 echo # MAXIMUM SIZE OF THE SENDSPACE FOR tcp CONNECTIONS
 echo   net.inet.tcp.sendspace=262144
 echo   net.inet.tcp.sendbuf_max=16777216
-echo   net.inet.tcp.sendbuf_inc=32768
+echo   net.inet.tcp.sendbuf_inc=16384
 echo   net.local.stream.sendspace=16384
+echo
+echo # set this on test/measurement hosts
+echo   net.inet.tcp.hostcache.expire=1
 echo 
 echo # MAXIMUM RECEIVE SPACE SIZE (RECVSPACE) FOR tcp CONNECTIONS
 echo   net.inet.tcp.recvspace=262144
 echo   net.inet.tcp.recvbuf_max=16777216
-echo   net.inet.tcp.recvbuf_inc=65536
+echo   net.inet.tcp.recvbuf_inc=524288
 echo   net.local.stream.recvspace=16384
 echo 
 echo # MAXIMUM DATAGRAM SIZE FOR raw SOCKETS

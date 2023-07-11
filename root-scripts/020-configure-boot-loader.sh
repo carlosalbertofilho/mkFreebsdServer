@@ -16,6 +16,9 @@ echo   aesni_load=\"YES\"
 echo   geom_eli_load=\"YES\"
 echo   cryptodev_load=\"YES\"
 echo   zfs_load=\"YES\"
+echo
+echo # TCP STACK
+echo   cc_htcp_load="YES"
 echo 
 echo # "SRAT: Ignoring local APIC ID 4 (too high)" on KVM
 echo   hint.apic.0.disabled=1  
