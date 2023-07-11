@@ -34,13 +34,12 @@ touch /etc/src.conf
 cd /usr/src
 touch /usr/src/sys/amd64/conf/CUSTOM-KERNEL
 {
-  echo \# Custom kernel config for NODEBUG
-  echo \# Add enable IPFW and NAT
   echo
-  echo include GENERIC-NODEBUG
+  echo include GENERIC
   echo
   echo ident CUSTOM-KERNEL
   echo
+  echo \# Add enable IPFW and NAT
   echo options  IPFIREWALL                    # enables IPFW
   echo options  IPFIREWALL_VERBOSE            # enables logging for rules with log keyword
   echo options  IPFIREWALL_VERBOSE_LIMIT=256  # limits number of logged packets per-entry
@@ -50,14 +49,16 @@ touch /usr/src/sys/amd64/conf/CUSTOM-KERNEL
   echo options  IPFIREWALL_NAT                # IPFW in-Kernel NAT support
   echo options  LIBALIAS                      # required for in-Kernel NAT / replacement for NATd
   echo
+  echo \# Activate the TCP BBR
+  echo makeoptions WITH_EXTRA_TCP_STACKS=1    # ADD EXTRA TCP STACKS
+  echo options RATELIMIT
+  echo options TCPHPTS
 
 } >> /usr/src/sys/amd64/conf/CUSTOM-KERNEL
 
-echo "Enter your ncpu: "
-read -r answer
-make -j"$answer" buildworld buildkernel KERNCONF=CUSTOM-KERNEL
+make -j"${sysctl -n hw.ncpu}" buildworld buildkernel KERNCONF=CUSTOM-KERNEL
 
 echo
 echo Reboot your system
 echo
-shutdown -r now
+reboot -p
