@@ -53,7 +53,9 @@ echo # DAEMONS | yes # ---------------------------------------------------------
 echo   sshd_enable=\"YES\"             # SSH 
 echo   ntpdate_enable=\"YES\"          # NTP 
 echo   rctl_enable=\"YES\"             # Resource Control Enable
-echo 
+echo   devfs_load_rulesets=\"YES\"     # Device rulesets load
+echo   jail_enable=\"YES\"             # Enable Jails
+echo
 echo 
 echo #
 echo # DAEMONS | no # -------------------------------------------------------------
@@ -75,6 +77,6 @@ echo #
 echo # OTHER # --------------------------------------------------------------------
 echo   syslogd_flags=\"-ss\"
 echo   virecover_enable=\"NO\"
-echo   devfs_system_ruleset=\"desktop\"
+echo   # devfs_system_ruleset=\"desktop\"
 echo   savecore_enable=\"NO\"
 } > "$rc_conf"
