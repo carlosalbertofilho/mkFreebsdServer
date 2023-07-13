@@ -47,6 +47,11 @@ echo #
 echo # NETWORK # ------------------------------------------------------------------
 echo   ifconfig_vtnet0=\"$ifconfig_vtnet0\"
 echo   defaultrouter=\"$defaultrouter\"
+echo
+echo #
+echo # FIREWALL # ------------------------------------------------------------------
+echo   pf_enable=\"YES\"
+echo   pflog_enable=\"YES\"
 echo 
 echo #
 echo # DAEMONS | yes # ------------------------------------------------------------
