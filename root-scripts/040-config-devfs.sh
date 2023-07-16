@@ -8,7 +8,8 @@ echo
 
 {
 echo     
-echo [jail_with_bpf=5] 
+echo \# jail_with_bpf
+echo [server=5]
 echo add include $devfsrules_hide_all
 echo add include $devfsrules_unhide_basic
 echo add include $devfsrules_unhide_login

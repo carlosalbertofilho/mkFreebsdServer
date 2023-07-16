@@ -42,22 +42,22 @@ if [ -f "$rc_conf" ]; then
 fi
 
 {
-echo # MODULES/COMMON/BASE # ------------------------------------------------------
+echo \# MODULES/COMMON/BASE # ------------------------------------------------------
 echo   hostname=\"$hostname\"
 echo   keymap=\"$keymap\"
 echo 
-echo #
-echo # NETWORK # ------------------------------------------------------------------
+echo \#
+echo \# NETWORK \# ------------------------------------------------------------------
 echo   ifconfig_vtnet0=\"$ifconfig_vtnet0\"
 echo   defaultrouter=\"$defaultrouter\"
 echo
-echo #
-echo # FIREWALL # ------------------------------------------------------------------
+echo \#
+echo \# FIREWALL \# ------------------------------------------------------------------
 echo   pf_enable=\"YES\"
 echo   pflog_enable=\"YES\"
 echo 
-echo #
-echo # DAEMONS | yes # ------------------------------------------------------------
+echo \#
+echo \# DAEMONS | yes \# ------------------------------------------------------------
 echo   sshd_enable=\"YES\"             # SSH 
 echo   ntpdate_enable=\"YES\"          # NTP 
 echo   rctl_enable=\"YES\"             # Resource Control Enable
@@ -65,8 +65,8 @@ echo   devfs_load_rulesets=\"YES\"     # Device rulesets load
 echo   jail_enable=\"YES\"             # Enable Jails
 echo
 echo 
-echo #
-echo # DAEMONS | no # -------------------------------------------------------------
+echo \#
+echo \# DAEMONS | no \# -------------------------------------------------------------
 echo   sendmail_enable=\"NONE\"
 echo   dumpdev=\"NO\"
 echo   sendmail_enable=NONE
@@ -74,15 +74,15 @@ echo   sendmail_submit_enable=\"NO\"
 echo   sendmail_outbound_enable=\"NO\"
 echo   sendmail_msp_queue_enable=\"NO\"
 echo 
-echo #
-echo # FS # -----------------------------------------------------------------------
+echo \#
+echo \# FS \# -----------------------------------------------------------------------
 echo   zfs_enable=\"YES\"
 echo   clear_tmp_enable=\"YES\"
 echo   clear_tmp_X=\"YES\"
 echo   growfs_enable=\"YES\"
 echo 
-echo #
-echo # OTHER # --------------------------------------------------------------------
+echo \#
+echo \# OTHER \# --------------------------------------------------------------------
 echo   syslogd_flags=\"-ss\"
 echo   virecover_enable=\"NO\"
 echo   # devfs_system_ruleset=\"desktop\"
