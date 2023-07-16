@@ -1,3 +1,6 @@
+#!/bin/sh
+set -e
+
 echo
 echo Configure /boot/loader.conf
 echo
