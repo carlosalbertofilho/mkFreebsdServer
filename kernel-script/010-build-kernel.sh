@@ -59,6 +59,18 @@ touch /usr/src/sys/amd64/conf/CUSTOM-KERNEL
 make -j"${sysctl -n hw.ncpu}" buildworld buildkernel KERNCONF=CUSTOM-KERNEL
 
 echo
-echo Reboot your system
+echo Install custom kernel
 echo
+
+cd /usr/src
+make installkernel KERNCONF=CUSTOM-KERNEL
+
+echo
+echo Snapshot install kernel
+echo
+
+echo "Enter you ZPOOL name: "
+read -r answer
+zfs snapshot -r "$answer"/ROOT/default@install-kernel
+
 reboot -p
