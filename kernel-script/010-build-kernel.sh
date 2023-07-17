@@ -3,6 +3,15 @@
 set -e
 
 echo
+echo Update base and Install Git
+echo
+
+pkg update && sudo pkg upgrade -y
+pkg install -y git
+
+
+
+echo
 echo Clone sources Ports and Kernel of the FreeBSD
 echo
 

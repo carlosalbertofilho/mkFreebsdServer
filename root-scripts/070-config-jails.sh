@@ -8,4 +8,4 @@ echo
 pkg install -y cbsd
 
 # start config
-cbsd initenv
+env workdir=/usr/jails /usr/local/cbsd/sudoexec/initenv
