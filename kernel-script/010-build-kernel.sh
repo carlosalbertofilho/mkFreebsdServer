@@ -15,8 +15,7 @@ echo
 echo Clone sources Ports and Kernel of the FreeBSD
 echo
 
-rm -fr /usr/src/* 
-rm -fr /usr/src/.*
+
 cd /usr/src
 git clone -b releng/13.2 --depth 1 https://git.freebsd.org/src.git . 
 
@@ -42,6 +41,7 @@ touch /etc/src.conf
     echo WITHOUT_ASSERT_DEBUG=\"ON\"
 } >> /etc/src.conf
 
+rm -fr /usr/src
 cd /usr/src
 touch /usr/src/sys/amd64/conf/CUSTOM-KERNEL
 {
@@ -66,7 +66,10 @@ touch /usr/src/sys/amd64/conf/CUSTOM-KERNEL
 
 } >> /usr/src/sys/amd64/conf/CUSTOM-KERNEL
 
-make -j"${sysctl -n hw.ncpu}" buildworld buildkernel KERNCONF=CUSTOM-KERNEL
+# Get CPUs core number
+ncpu=$(sysctl -n hw.ncpu)
+
+make -j"$ncpu" buildworld buildkernel KERNCONF=CUSTOM-KERNEL
 
 echo
 echo Install custom kernel
