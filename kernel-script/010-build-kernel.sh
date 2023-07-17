@@ -43,8 +43,6 @@ touch /etc/src.conf
     echo WITHOUT_ASSERT_DEBUG=\"ON\"
 } >> /etc/src.conf
 
-rm -fr /usr/src
-cd /usr/src
 touch /usr/src/sys/amd64/conf/CUSTOM-KERNEL
 {
   echo
