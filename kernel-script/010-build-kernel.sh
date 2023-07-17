@@ -16,8 +16,10 @@ echo Clone sources Ports and Kernel of the FreeBSD
 echo
 
 
-cd /usr/src
-git clone -b releng/13.2 --depth 1 https://git.freebsd.org/src.git . 
+if [ -n "$(ls -A /usr/src)" ]; then
+    rm -rf /usr/src
+fi
+git clone -b releng/13.2 --depth 1 https://git.freebsd.org/src.git /usr/src 
 
 
 touch /etc/make.conf
@@ -51,16 +53,16 @@ touch /usr/src/sys/amd64/conf/CUSTOM-KERNEL
   echo ident CUSTOM-KERNEL
   echo
   echo \# Add enable IPFW and NAT
-  echo options  IPFIREWALL                    # enables IPFW
-  echo options  IPFIREWALL_VERBOSE            # enables logging for rules with log keyword
-  echo options  IPFIREWALL_VERBOSE_LIMIT=256  # limits number of logged packets per-entry
+  echo options  IPFIREWALL                    \# enables IPFW
+  echo options  IPFIREWALL_VERBOSE            \# enables logging for rules with log keyword
+  echo options  IPFIREWALL_VERBOSE_LIMIT=256  \# limits number of logged packets per-entry
   echo
-  echo options  IPDIVERT                      # enables NATd Support
-  echo options  IPFIREWALL_NAT                # IPFW in-Kernel NAT support
-  echo options  LIBALIAS                      # required for in-Kernel NAT / replacement for NATd
+  echo options  IPDIVERT                      \# enables NATd Support
+  echo options  IPFIREWALL_NAT                \# IPFW in-Kernel NAT support
+  echo options  LIBALIAS                      \# required for in-Kernel NAT / replacement for NATd
   echo
   echo \# Activate the TCP BBR
-  echo makeoptions WITH_EXTRA_TCP_STACKS=1    # ADD EXTRA TCP STACKS
+  echo makeoptions WITH_EXTRA_TCP_STACKS=1    \# ADD EXTRA TCP STACKS
   echo options RATELIMIT
   echo options TCPHPTS
 
