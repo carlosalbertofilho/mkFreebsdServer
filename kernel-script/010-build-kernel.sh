@@ -37,13 +37,13 @@ touch /etc/make.conf
   echo COPTFLAGS=-O2 -pipe -fno-strict-aliasing
   echo \# enable speed
   echo MALLOC_PRODUCTION=\"YES\"
-} >> /etc/make.conf
+} > /etc/make.conf
 
 touch /etc/src.conf
 {
     echo \# NO DEBUG
     echo WITHOUT_ASSERT_DEBUG=\"ON\"
-} >> /etc/src.conf
+} > /etc/src.conf
 
 touch /usr/src/sys/amd64/conf/CUSTOM-KERNEL
 {
@@ -66,7 +66,7 @@ touch /usr/src/sys/amd64/conf/CUSTOM-KERNEL
   echo options RATELIMIT
   echo options TCPHPTS
 
-} >> /usr/src/sys/amd64/conf/CUSTOM-KERNEL
+} > /usr/src/sys/amd64/conf/CUSTOM-KERNEL
 
 cd /usr/src
 
