@@ -17,5 +17,3 @@ echo "Enter you ZPOOL name: "
 read -r answer
 zfs snapshot -r "$answer"/ROOT/default@install-world
 
-
-reboot -p
