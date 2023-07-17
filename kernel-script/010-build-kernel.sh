@@ -17,7 +17,7 @@ echo
 
 rm -fr /usr/src/* 
 rm -fr /usr/src/.*
-git clone --depth 1 https://git.freebsd.org/src.git /usr/src -b releng/13.2
+git clone -b releng/13.2 --depth 1 https://git.freebsd.org/src.git /usr/src 
 
 
 touch /etc/make.conf
