@@ -46,7 +46,7 @@ cat <<EOF>> /etc/src.conf
   WITHOUT_ASSERT_DEBUG="ON"
 EOF
 
-cp ./kernel-script/NUTANIX_KERNEL  /usr/src/sys/amd64/conf
+cp ./kernel-script/NUTANIX /usr/src/sys/amd64/conf
 
 cat <<EOF>> /usr/src/sys/amd64/conf/CUSTOM-KERNEL
 # Extend Nutanix conf
