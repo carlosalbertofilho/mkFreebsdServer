@@ -54,7 +54,9 @@ echo
 echo \#
 echo \# FIREWALL \# ------------------------------------------------------------------
 echo   pf_enable=\"YES\"
+echo   pf_rules=\"/usr/local/etc/pf.conf\"
 echo   pflog_enable=\"YES\"
+echo   pflog_logfile=\"/var/log/pflog\"
 echo 
 echo \#
 echo \# DAEMONS | yes \# ------------------------------------------------------------

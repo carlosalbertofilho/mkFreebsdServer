@@ -43,7 +43,6 @@ touch /usr/src/sys/amd64/conf/CUSTOM-KERNEL
   echo options  IPFIREWALL                    # enables IPFW
   echo options  IPFIREWALL_VERBOSE            # enables logging for rules with log keyword
   echo options  IPFIREWALL_VERBOSE_LIMIT=256  # limits number of logged packets per-entry
-  echo options  IPFIREWALL_DEFAULT_TO_ACCEPT  # sets default policy to pass what is not explicitly denied
   echo
   echo options  IPDIVERT                      # enables NATd Support
   echo options  IPFIREWALL_NAT                # IPFW in-Kernel NAT support
