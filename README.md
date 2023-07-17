@@ -28,28 +28,27 @@ The end result is a Xmonad environment with Emacs, NeoVim etc. that also works w
     ```bash
         bsdconfig
     ```
-    ![bsdconfig](./img/bsdconfig_network.png)
     2. Install git with:
     ```bash
         pkg install -y git
     ```
     3. Clone this repo
     ```bash
-        cd /root && git clone https://github.com/carlosalbertofilho/mkFreebsdDesktop
+        cd /root && git clone https://github.com/carlosalbertofilho/mkFreebsdServer
     ```
 3. Compile and Install Person Kernel
     1. Build the custom kernel
     ```bash
-        ./kernel-script/010-build-kernel.sh
+        ./install.sh
     ```
     the system will restart after that!
-    2. Install the custon kernel
+    2. Build and Install the new word
     ```bash
-        ./kernel-script/020-install-kernel.sh
+        ./install.sh
     ```
     the system will restart after that!
-    3. Install world for custon kernel
+    3. Config and install packager
     ```bash
-        ./kernel-script/030-install-world.sh
+        ./install.sh
     ```
-    the system will restart after that!
+    the system done!
