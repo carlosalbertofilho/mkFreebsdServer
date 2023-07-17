@@ -20,7 +20,7 @@ if [ -n "$(ls -A /usr/src)" ]; then
     rm -rf /usr/src
 fi
 sync
-sleep 60
+sleep 100
 git clone -b releng/13.2 --depth 1 https://git.freebsd.org/src.git /usr/src 
 
 #
