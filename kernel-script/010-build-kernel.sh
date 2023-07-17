@@ -15,7 +15,8 @@ echo
 echo Clone sources Ports and Kernel of the FreeBSD
 echo
 
-rm -fr /usr/src/* && rm -fr /usr/src/.*
+rm -fr /usr/src/* 
+rm -fr /usr/src/.*
 git clone --depth 1 https://git.freebsd.org/src.git /usr/src -b releng/13.2
 
 
