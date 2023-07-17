@@ -36,7 +36,7 @@ cat <<EOF>> /etc/make.conf
 # CPU optimations
  CFLAGS=-O2 -pipe -fno-strict-aliasing
  COPTFLAGS=-O2 -pipe -fno-strict-aliasing
- 
+
 # enable speed
  MALLOC_PRODUCTION="YES"
 EOF
@@ -46,7 +46,7 @@ cat <<EOF>> /etc/src.conf
   WITHOUT_ASSERT_DEBUG="ON"
 EOF
 
-cp ./NUTANIX_KERNEL  /usr/src/sys/amd64/conf
+cp ./kernel-script/NUTANIX_KERNEL  /usr/src/sys/amd64/conf
 
 cat <<EOF>> /usr/src/sys/amd64/conf/CUSTOM-KERNEL
 # Extend Nutanix conf
