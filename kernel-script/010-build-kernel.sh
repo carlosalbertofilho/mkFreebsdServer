@@ -19,6 +19,7 @@ echo
 if [ -n "$(ls -A /usr/src)" ]; then
     rm -rf /usr/src
 fi
+sync
 git clone -b releng/13.2 --depth 1 https://git.freebsd.org/src.git /usr/src 
 
 
@@ -66,10 +67,12 @@ touch /usr/src/sys/amd64/conf/CUSTOM-KERNEL
 
 } >> /usr/src/sys/amd64/conf/CUSTOM-KERNEL
 
+cd /usr/src
+
 # Get CPUs core number
 ncpu=$(sysctl -n hw.ncpu)
 
-make -j"$ncpu" buildworld buildkernel KERNCONF=CUSTOM-KERNEL
+make -j"$ncpu" buildkernel KERNCONF=CUSTOM-KERNEL
 
 echo
 echo Install custom kernel
