@@ -11,16 +11,16 @@ rc_conf="/etc/rc.conf"
 
 # Função para extrair valor de um parâmetro
 extract_value() {
-  local line=$1
-  local parameter=$2
-  local value=""
+  _line="$1"
+  _parameter="$2"
+  _value=""
 
-  if echo "$line" | grep -q "^$parameter="; then
-    value=$(echo "$line" | cut -d'=' -f2)
-    value=$(echo "$value" | tr -d '"' | tr -d ' ')
+  if echo "$_line" | grep -q "^$_parameter="; then
+    _value=$(echo "$_line" | cut -d'=' -f2)
+    _value=$(echo "$_value" | tr -d '"' | tr -d ' ')
   fi
 
-  echo "$value"
+  echo "$_value"
 }
 
 # Verifica se o arquivo de configuração existe
@@ -41,52 +41,51 @@ if [ -f "$rc_conf" ]; then
   done < "$rc_conf"
 fi
 
-{
-echo \# MODULES/COMMON/BASE # ------------------------------------------------------
-echo   hostname=\"$hostname\"
-echo   keymap=\"$keymap\"
-echo 
-echo \#
-echo \# NETWORK \# ------------------------------------------------------------------
-echo   ifconfig_vtnet0=\"$ifconfig_vtnet0\"
-echo   defaultrouter=\"$defaultrouter\"
-echo
-echo \#
-echo \# FIREWALL \# ------------------------------------------------------------------
-echo   pf_enable=\"YES\"
-echo   pf_rules=\"/usr/local/etc/pf.conf\"
-echo   pflog_enable=\"YES\"
-echo   pflog_logfile=\"/var/log/pflog\"
-echo 
-echo \#
-echo \# DAEMONS | yes \# ------------------------------------------------------------
-echo   sshd_enable=\"YES\"             \# SSH 
-echo   ntpdate_enable=\"YES\"          \# NTP 
-echo   rctl_enable=\"YES\"             \# Resource Control Enable
-echo   devfs_load_rulesets=\"YES\"     \# Device rulesets load
-echo   jail_enable=\"YES\"             \# Enable Jails
-echo
-echo 
-echo \#
-echo \# DAEMONS | no \# -------------------------------------------------------------
-echo   sendmail_enable=\"NONE\"
-echo   dumpdev=\"NO\"
-echo   sendmail_enable=NONE
-echo   sendmail_submit_enable=\"NO\"
-echo   sendmail_outbound_enable=\"NO\"
-echo   sendmail_msp_queue_enable=\"NO\"
-echo 
-echo \#
-echo \# FS \# -----------------------------------------------------------------------
-echo   zfs_enable=\"YES\"
-echo   clear_tmp_enable=\"YES\"
-echo   clear_tmp_X=\"YES\"
-echo   growfs_enable=\"YES\"
-echo 
-echo \#
-echo \# OTHER \# --------------------------------------------------------------------
-echo   syslogd_flags=\"-ss\"
-echo   virecover_enable=\"NO\"
-echo   devfs_system_ruleset=\"server\"
-echo   savecore_enable=\"NO\"
-} > "$rc_conf"
+cat <<EOF> "$rc_conf"
+\# MODULES/COMMON/BASE # ------------------------------------------------------
+  hostname="$hostname"
+  keymap="$keymap"
+
+\#
+\# NETWORK \# ------------------------------------------------------------------
+  ifconfig_vtnet0="$ifconfig_vtnet0"
+  defaultrouter="$defaultrouter"
+\#
+\# FIREWALL \# ------------------------------------------------------------------
+  pf_enable="YES"
+  pf_rules=\"/usr/local/etc/pf.conf\"
+  pflog_enable="YES"
+  pflog_logfile=\"/var/log/pflog\"
+
+\#
+\# DAEMONS | yes \# ------------------------------------------------------------
+  sshd_enable="YES"             # SSH 
+  ntpdate_enable="YES"          # NTP 
+  rctl_enable="YES"             # Resource Control Enable
+  devfs_load_rulesets="YES"     # Device rulesets load
+  jail_enable="YES"             # Enable Jails
+
+\#
+\# DAEMONS | no \# -------------------------------------------------------------
+  sendmail_enable="NONE"
+  dumpdev="NO"
+  sendmail_enable="NONE"
+  sendmail_submit_enable="NO"
+  sendmail_outbound_enable="NO"
+  sendmail_msp_queue_enable="NO"
+
+\#
+\# FS \# -----------------------------------------------------------------------
+  zfs_enable="YES"
+  clear_tmp_enable="YES"
+  clear_tmp_X="YES"
+  growfs_enable="YES"
+
+\#
+\# OTHER \# --------------------------------------------------------------------
+  syslogd_flags="-ss"
+  virecover_enable="NO"
+  devfs_system_ruleset="server"
+  savecore_enable="NO"
+
+EOF

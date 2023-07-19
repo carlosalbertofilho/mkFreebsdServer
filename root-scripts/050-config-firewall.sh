@@ -6,7 +6,7 @@ echo Configure firewall
 echo
 
 
-cat <<EOF>> /usr/local/etc/pf.conf
+cat <<EOF> /usr/local/etc/pf.conf
 
 set skip on lo0
 block all

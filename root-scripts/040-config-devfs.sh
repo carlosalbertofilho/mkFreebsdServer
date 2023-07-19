@@ -6,15 +6,14 @@ echo Configure /etc/devfs.rules
 echo
 
 
-{
-echo     
-echo \# jail_with_bpf
-echo [server=5]
-echo add include $devfsrules_hide_all
-echo add include $devfsrules_unhide_basic
-echo add include $devfsrules_unhide_login
-echo add path \'tun\*\' unhide
-echo add path \'bpf\*\' unhide
-echo add path zfs unhide
-echo 
-} >> /etc/devfs.rules
+cat <<EOF> /etc/devfs.rules  
+# jail_with_bpf
+  [server=5]
+  add include $devfsrules_hide_all
+  add include $devfsrules_unhide_basic
+  add include $devfsrules_unhide_login
+  add path \'tun\*\' unhide
+  add path \'bpf\*\' unhide
+  add path zfs unhide
+
+EOF
