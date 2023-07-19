@@ -42,31 +42,31 @@ if [ -f "$rc_conf" ]; then
 fi
 
 cat <<EOF> "$rc_conf"
-\# MODULES/COMMON/BASE # ------------------------------------------------------
+# MODULES/COMMON/BASE # ------------------------------------------------------
   hostname="$hostname"
   keymap="$keymap"
 
-\#
-\# NETWORK \# ------------------------------------------------------------------
+#
+# NETWORK # ------------------------------------------------------------------
   ifconfig_vtnet0="$ifconfig_vtnet0"
   defaultrouter="$defaultrouter"
-\#
-\# FIREWALL \# ------------------------------------------------------------------
+#
+# FIREWALL # ------------------------------------------------------------------
   pf_enable="YES"
-  pf_rules=\"/usr/local/etc/pf.conf\"
+  pf_rules="/usr/local/etc/pf.conf"
   pflog_enable="YES"
-  pflog_logfile=\"/var/log/pflog\"
+  pflog_logfile="/var/log/pflog"
 
-\#
-\# DAEMONS | yes \# ------------------------------------------------------------
+#
+# DAEMONS | yes # ------------------------------------------------------------
   sshd_enable="YES"             # SSH 
   ntpdate_enable="YES"          # NTP 
   rctl_enable="YES"             # Resource Control Enable
   devfs_load_rulesets="YES"     # Device rulesets load
   jail_enable="YES"             # Enable Jails
 
-\#
-\# DAEMONS | no \# -------------------------------------------------------------
+#
+# DAEMONS | no # -------------------------------------------------------------
   sendmail_enable="NONE"
   dumpdev="NO"
   sendmail_enable="NONE"
@@ -74,15 +74,15 @@ cat <<EOF> "$rc_conf"
   sendmail_outbound_enable="NO"
   sendmail_msp_queue_enable="NO"
 
-\#
-\# FS \# -----------------------------------------------------------------------
+#
+# FS # -----------------------------------------------------------------------
   zfs_enable="YES"
   clear_tmp_enable="YES"
   clear_tmp_X="YES"
   growfs_enable="YES"
 
-\#
-\# OTHER \# --------------------------------------------------------------------
+#
+# OTHER # --------------------------------------------------------------------
   syslogd_flags="-ss"
   virecover_enable="NO"
   devfs_system_ruleset="server"
