@@ -34,7 +34,9 @@ The end result is a Xmonad environment with Emacs, NeoVim etc. that also works w
     ```
     3. Clone this repo
     ```bash
-        cd /root && git clone https://github.com/carlosalbertofilho/mkFreebsdServer
+        cd /root 
+        git clone https://github.com/carlosalbertofilho/mkFreebsdServer
+        cd /mkFreebsdServer
     ```
 3. Compile and Install Person Kernel
     1. Build the custom kernel

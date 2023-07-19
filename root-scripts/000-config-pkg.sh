@@ -24,4 +24,4 @@ echo
 echo Packager update
 echo
 
-pkg update && sudo pkg upgrade
+pkg update && pkg upgrade
