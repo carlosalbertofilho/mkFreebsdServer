@@ -62,7 +62,6 @@ jail_enable="YES"             # Enable Jails
 
 #
 # DAEMONS | no # -------------------------------------------------------------
-sendmail_enable="NONE"
 dumpdev="NO"
 sendmail_enable="NONE"
 sendmail_submit_enable="NO"
