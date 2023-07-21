@@ -6,7 +6,7 @@ echo Configure /boot/loader.conf
 echo
 
 
-cat <<EOF>> /boot/loader.conf
+cat <<EOF> /boot/loader.conf
 # CONSOLE COMMON
  autoboot_delay=4       # OPT. '-1' => NO WAIT | OPT. 'NO' => INFINITE WAIT
 

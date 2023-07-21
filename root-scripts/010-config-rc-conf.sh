@@ -45,12 +45,22 @@ keymap="$keymap"
 # NETWORK # ------------------------------------------------------------------
 ifconfig_vtnet0="$ifconfig_vtnet0"
 defaultrouter="$defaultrouter"
+
 #
 # FIREWALL # ------------------------------------------------------------------
 pf_enable="YES"
 pf_rules="/usr/local/etc/pf.conf"
 pflog_enable="YES"
 pflog_logfile="/var/log/pflog"
+
+#
+# JAIL CBSD# --------------------------------------------------------------------
+cbsd_workdir="/usr/jails"
+cbsdrsyncd_enable="YES"
+cbsdrsyncd_flags="--config=/usr/jails/etc/rsyncd.conf"
+cbsdd_enable="YES"
+rcshutdown_timeout="900"
+
 
 #
 # DAEMONS | yes # ------------------------------------------------------------
